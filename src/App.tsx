@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 interface App2Props {}
-
+//sd
 interface App2State {
   name: string;
   company: string;
