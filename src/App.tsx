@@ -2,6 +2,7 @@ import React, {Component} from "react";
 
 import CardList from "./components/card-list/card-list.component";
 import SearchBox from "./components/search-box/search-box.component";
+import Example from "./components/hook/hook.component";
 
 import "./App.css";
 
@@ -46,12 +47,14 @@ class App2 extends Component<App2Props, App2State> {
 
     return (
       <div className="App">
+        <h1 className="app-title">Monsters Rolodex</h1>
         <SearchBox
           onChangeHandler={onSearchChange}
           placeholder="search monsters"
           className="search-box"
         />
         <CardList monsters={filteredMonsters} />
+        <Example />
       </div>
     );
   }
