@@ -13,12 +13,25 @@ root.render(
   </React.StrictMode>
 );
 
+// constructor
+// App.tsx:46 render
+// App.tsx:26 componentDidMount
+// App.tsx:26 componentDidMount
+// App.tsx:46 render
+// react_devtools_backend.js:4029 render
+// App.tsx:46 render
+
 // ReactDOM.render(
 //   <React.StrictMode>
-//     <App />
+//     <App2 />
 //   </React.StrictMode>,
 //   document.getElementById("root")
 // );
+
+// // constructor
+// // VM8414:249 render
+// // App.tsx:26 componentDidMount
+// // App.tsx:46 render
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
