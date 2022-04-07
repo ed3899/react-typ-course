@@ -1,5 +1,7 @@
 import React, {Component} from "react";
-import logo from "./logo.svg";
+
+import CardList from "./components/card-list/card-list.component";
+
 import "./App.css";
 
 interface App2Props {}
@@ -18,21 +20,12 @@ class App2 extends Component<App2Props, App2State> {
     };
 
     this.onSearchChange = this.onSearchChange.bind(this);
-
-    console.log("constructor");
   }
 
   componentDidMount() {
-    console.log("componentDidMount");
-
     fetch("https://jsonplaceholder.typicode.com/users")
       .then(res => res.json())
-      .then(users =>
-        this.setState(
-          () => ({monsters: users})
-          // () => console.log(this.state)
-        )
-      );
+      .then(users => this.setState(() => ({monsters: users})));
   }
 
   onSearchChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -43,8 +36,6 @@ class App2 extends Component<App2Props, App2State> {
 
   render(): React.ReactNode {
     // Computed properties
-    console.log("render");
-
     const {monsters, searchField} = this.state;
     const {onSearchChange} = this;
 
@@ -60,13 +51,7 @@ class App2 extends Component<App2Props, App2State> {
           placeholder="search monsters"
           onChange={event => onSearchChange(event)}
         />
-        {filteredMonsters.map(monster => {
-          return (
-            <div key={monster.id}>
-              <h1>{monster.name}</h1>
-            </div>
-          );
-        })}
+        <CardList monsters={filteredMonsters} />
       </div>
     );
   }
