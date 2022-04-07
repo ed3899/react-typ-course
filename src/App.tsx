@@ -3,48 +3,65 @@ import logo from "./logo.svg";
 import "./App.css";
 
 interface App2Props {}
-//sd
 interface App2State {
-  name: string;
-  company: string;
+  monsters: {name: string; id: string}[];
 }
 
 class App2 extends Component<App2Props, App2State> {
   constructor(props: App2Props) {
     super(props);
+
     this.state = {
-      name: "Yihua",
-      company: "ZTM",
+      monsters: [],
     };
+
+    this.filterMonsters = this.filterMonsters.bind(this);
+  }
+
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res => res.json())
+      .then(users =>
+        this.setState(
+          () => ({monsters: users}),
+          () => console.log(this.state)
+        )
+      );
+  }
+
+  filterMonsters(event: React.ChangeEvent<HTMLInputElement>) {
+    const searchString = event.target.value.toLowerCase();
+
+    console.log(searchString);
+
+    const filteredMonsters = this.state.monsters.filter(monster => {
+      return monster.name.toLowerCase().includes(searchString);
+    });
+
+    console.log(filteredMonsters);
+
+    this.setState(() => ({monsters: filteredMonsters}));
   }
 
   render(): React.ReactNode {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>Hi {this.state.name}</p>
-          <button
-            onClick={() => {
-              this.setState({name: "Andrei"});
-            }}>
-            Change name
-          </button>
-        </header>
+        <input
+          className="search-box"
+          type="search"
+          placeholder="search monsters"
+          onChange={event => this.filterMonsters(event)}
+        />
+        {this.state.monsters.map(monster => {
+          return (
+            <div key={monster.id}>
+              <h1>{monster.name}</h1>
+            </div>
+          );
+        })}
       </div>
     );
   }
 }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
-  );
-}
-
-export default App;
-export {App2};
+export default App2;

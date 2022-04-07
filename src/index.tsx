@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App, {App2} from "./App";
+import App2 from "./App";
 import reportWebVitals from "./reportWebVitals";
 import {createRoot} from "react-dom/client";
 
