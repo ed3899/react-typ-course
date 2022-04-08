@@ -8,19 +8,32 @@ interface CardListProps {
   monsters: any[];
 }
 
-class CardList extends Component<CardListProps> {
-  render() {
-    const {monsters} = this.props;
+const CardList = function (props: CardListProps) {
+  const {monsters} = props;
 
-    return (
-      <div className="card-list">
-        {monsters.map(monster => {
-          const {id} = monster;
-          return <Card monster={monster} key={id} />;
-        })}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="card-list">
+      {monsters.map(monster => {
+        const {id} = monster;
+        return <Card monster={monster} key={id} />;
+      })}
+    </div>
+  );
+};
+
+// class CardList extends Component<CardListProps> {
+//   render() {
+//     const {monsters} = this.props;
+
+//     return (
+//       <div className="card-list">
+//         {monsters.map(monster => {
+//           const {id} = monster;
+//           return <Card monster={monster} key={id} />;
+//         })}
+//       </div>
+//     );
+//   }
+// }
 
 export default CardList;

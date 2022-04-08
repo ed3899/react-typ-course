@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App2 from "./App";
+import App from "./App";
+import Example from "./components/hook/hook.component";
 import reportWebVitals from "./reportWebVitals";
 import {createRoot} from "react-dom/client";
 
@@ -9,7 +10,7 @@ const container = document.getElementById("root")!;
 const root = createRoot(container);
 root.render(
   <React.StrictMode>
-    <App2 />
+    <App />
   </React.StrictMode>
 );
 
